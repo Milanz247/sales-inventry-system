@@ -36,15 +36,14 @@
                         <a href="form_advanced.html"> Items</a>
                     </li>
                     <li>
-                        <a href="form_basic.html">Add New Item </a>
+                        <a href="{{ url('view_item') }}">Add New Item </a>
                     </li>
                     <li>
                         <a href="form_advanced.html"> Update Selling Price</a>
                     </li>
                     <li>
-                        <a href="form_advanced.html"> Add New category</a>
+                        <a href="{{ url('view_catagory') }}">Category</a>
                     </li>
-
                 </ul>
             </li>
             <li>

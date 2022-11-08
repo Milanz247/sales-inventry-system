@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\catagory;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -45,22 +46,70 @@ class AdminController extends Controller
 
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','User added successfuly');
     }
     public function deleteuser($id)
         {
              $data=user::find($id);
              $data->delete();
 
-             return redirect()->back();
+             return redirect()->back()->with('message','User Deleted  successfuly');
 
+        }
+        public function  user_serach(request $request)
+        {
+            $search_text=$request->search;
+
+            $users =user::where('name','LIKE',"%$search_text%")->orwhere('position','LIKE',"%$search_text%")->get();
+
+            return view('admin.viewuser',compact('users'));
+        }
+
+                      /* Stock managmnet*/
+
+        public function  view_catagory()
+        {
+            $data =catagory::orderBy('catagory_name','asc')->get();
+
+            return view('admin.catagory',compact('data')) ;
+        }
+
+
+
+        public function  add_catagory(request $request)
+        {
+            $data=new catagory;
+
+            $data->catagory_name=$request->catagory;
+
+            $data->save();
+
+            return redirect()->back()->with('message','catagory added successfuly');
+
+
+        }
+        public function delete_catagory($id)
+        {
+             $data=catagory::find($id);
+             $data->delete();
+
+             return redirect()->back()->with('message','Catagory Deleted successfuly');
+
+        }
+
+        public function view_item()
+        {
+            return view('admin.item');
         }
 
 
 
 
 
-    /* Stock managmnet*/
+
+
+
+
 
 
 

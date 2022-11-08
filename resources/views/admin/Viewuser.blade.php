@@ -28,22 +28,29 @@
             </div>
             <div class="page-content fade-in-up">
                 <div class="ibox">
+                    @if(session()->has('message'))
+                    <div class="alert alert-success alert-dismissable fade show">
+                        <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Success!</strong>
+                        {{ session()->get('message') }}
+                    </div>
+                    @endif
                 </div>
             </div>
             <div class="col">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
-                  <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">
-                          <i class="fa fa-refresh"></i>
-                        </button>
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                          <i class="fa fa-search"></i>
-                        </button>
-                  </div>
-                </div>
+                <form action="{{ url('user_serach') }}" method="Get">
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="submit" value="search" id="button-addon2">
+                                <i class="fa fa-search"></i>
+                              </button>
+                        </div>
+                      </div>
+                </form>
             </div>
             <div class="ibox-body">
+
                 <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -88,7 +95,7 @@
                                 <a href="#">
                                     <button class="btn btn-info">Edit</button>
                                 </a>
-                                <a href="{{ url('delete_user',$users->id) }}" onclick="confirm('Are you sure?')">
+                                <a href="{{ url('delete_user',$users->id) }}" onclick="return confirm ('Are you sure to Delete')">
                                     <button class="btn btn-danger">Delete</button>
                                 </a>
                             </td>
@@ -98,6 +105,7 @@
 
                     </tbody>
                 </table>
+
                 <nav class="mt-4">
                     <ul class="pagination justify-content-center">
                       <li class="page-item disabled">

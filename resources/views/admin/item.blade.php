@@ -43,65 +43,51 @@
                 </div>
                 @endif
 
-                <h2 class="h2top">Create New User</h2>
+                <h2 class="h2top">Add New Item</h2>
             </div>
             <div class="tabledev">
                 <div class="ibox">
                     <div class="ibox-body">
-                        <form action="{{ url('add_user') }}" method="POST">
+                        <form action="{{ url('add_item') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Name</label>
-                                <input class="form-control" name="name" type="text" placeholder="name">
+                                <label>Item id</label>
+                                <input class="form-control" name="itemid" type="text" placeholder="Item id">
                             </div>
 
                             <div class="form-group">
-                                <label>Email</label>
-                                <input id="email" type="email" placeholder="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <label>Item Name</label>
+                                <input id="item_name" type="email" placeholder="item_ name" class="form-control" name="item_name"  >
                             </div>
 
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input class="form-control" name="phone"  type="Number" placeholder="phone">
+                                <label>Item Description</label>
+                                <input class="form-control" name="item_description"  type="text" placeholder="item description">
                             </div>
 
                             <div class="form-group">
-                                <label>Usertype</label>
-                                <input class="form-control"name="usertype"  type="text" placeholder="usertype">
+                                <label>Buying Price</label>
+                                <input class="form-control"name="buyingprice"  type="text" placeholder="buying price">
                             </div>
                             <div class="form-group">
-                                <label>Position</label>
-                                <input class="form-control"name="position"  type="text" placeholder="position">
+                                <label>Selling Price</label>
+                                <input class="form-control"name="sellingprice"  type="text" placeholder="sellingprice">
                             </div>
                             <div class="form-group">
-                                <label>Nice</label>
-                                <input class="form-control"name="Nice"  type="text" placeholder="Nice">
+                                <label>Warranty</label>
+                                <input class="form-control"name="warranty"  type="text" placeholder="Warranty">
                             </div>
                             <div class="form-group">
-                                <label>Gender</label>
-                                <input class="form-control"name="Gender"  type="text" placeholder="Gender">
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label>Address</label>
-                                <textarea class="form-control"   name="address" id="address" rows="3" ></textarea>
+                                <label>Quantity</label>
+                                <input class="form-control" name="quantity"  type="text" placeholder="quantity">
                             </div>
 
                             <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" name="password" type="password" placeholder="Password">
+                                <label>catagory	</label>
+                                <textarea class="form-control"   name="catagory	"	placeholder="catagory"></textarea>
                             </div>
-
-                            <div class="form-group">
-                                <button class="btn btn-success btn-block">ADD USER </button>
+                             <div class="form-group">
+                                <button class="btn btn-success btn-block">ADD ITEM </button>
                             </div>
 
                         </form>
