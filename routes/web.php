@@ -19,6 +19,9 @@ route::get('/dashboard',[AdminController::class,'dashboard']);
 route::get('/users',[AdminController::class,'users']);
 route::get('/Create_user',[AdminController::class,'Create_user']);
 route::POST('/add_user',[AdminController::class,'add_user']);
+route::get('/delete_user/{id}',[AdminController::class,'deleteuser']);
+
+
 
 
 

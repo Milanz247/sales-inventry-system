@@ -67,6 +67,20 @@
                                 <label>Usertype</label>
                                 <input class="form-control"name="usertype"  type="text" placeholder="usertype">
                             </div>
+                            <div class="form-group">
+                                <label>Position</label>
+                                <input class="form-control"name="position"  type="text" placeholder="position">
+                            </div>
+                            <div class="form-group">
+                                <label>Nice</label>
+                                <input class="form-control"name="Nice"  type="text" placeholder="Nice">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <input class="form-control"name="Gender"  type="text" placeholder="Gender">
+                            </div>
+
+
 
                             <div class="form-group">
                                 <label>Address</label>
@@ -81,7 +95,7 @@
                             <div class="form-group">
                                 <button class="btn btn-success btn-block">ADD USER </button>
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>

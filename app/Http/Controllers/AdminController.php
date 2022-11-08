@@ -13,12 +13,13 @@ class AdminController extends Controller
     {
         return view('admin.dashboard') ;
 
-    }
-                /* user managment*/
+    }        /* user managment*/
 
     public function users()
     {
-        return view('admin.Viewuser') ;
+        $users =User::orderBy('name','asc')->get();
+
+        return view('admin.Viewuser',compact('users')) ;
 
     }
 
@@ -36,14 +37,25 @@ class AdminController extends Controller
         $data->email=$request->email;
         $data->usertype=$request->usertype;
         $data->phone=$request->phone;
-        $data->posision=$request->posision;
+        $data->position=$request->position;
         $data->address=$request->address;
+        $data->Nice=$request->Nice;
+        $data->Gender=$request->Gender;
         $data->password=Hash::make($request->password);
 
         $data->save();
 
         return redirect()->back();
     }
+    public function deleteuser($id)
+        {
+             $data=user::find($id);
+             $data->delete();
+
+             return redirect()->back();
+
+        }
+
 
 
 
