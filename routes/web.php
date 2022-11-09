@@ -28,6 +28,10 @@ route::get('/delete_catagory/{id}',[AdminController::class,'delete_catagory']);
 
 
 route::get('/view_item',[AdminController::class,'view_item']);
+route::post('/add_item',[AdminController::class,'add_item']);
+
+
+
 
 
 

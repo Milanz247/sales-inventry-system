@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('Selling_price');
             $table->string('warranty');
             $table->string('quantity');
-            $table->string('catagory');
+            $table->integer('catagory_id');
              $table->timestamps();
         });
     }

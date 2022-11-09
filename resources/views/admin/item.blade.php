@@ -52,39 +52,46 @@
                             @csrf
                             <div class="form-group">
                                 <label>Item id</label>
-                                <input class="form-control" name="itemid" type="text" placeholder="Item id">
+                                <input class="form-control" name=" itemid" type="text" placeholder="Item id" required="">
                             </div>
-
                             <div class="form-group">
                                 <label>Item Name</label>
-                                <input id="item_name" type="email" placeholder="item_ name" class="form-control" name="item_name"  >
+                                <input class="form-control" name="itemname"  required="" type="text" placeholder="item name">
                             </div>
+
 
                             <div class="form-group">
                                 <label>Item Description</label>
-                                <input class="form-control" name="item_description"  type="text" placeholder="item description">
+                                <input class="form-control" name="itemdescription"  required="" type="text" placeholder="item description">
                             </div>
 
                             <div class="form-group">
                                 <label>Buying Price</label>
-                                <input class="form-control"name="buyingprice"  type="text" placeholder="buying price">
+                                <input class="form-control"name="buyingprice"  required="" type="text" placeholder="buying price">
                             </div>
                             <div class="form-group">
                                 <label>Selling Price</label>
-                                <input class="form-control"name="sellingprice"  type="text" placeholder="sellingprice">
+                                <input class="form-control"name="sellingprice"  required=""  type="text" placeholder="selling price">
                             </div>
                             <div class="form-group">
                                 <label>Warranty</label>
-                                <input class="form-control"name="warranty"  type="text" placeholder="Warranty">
+                                <input class="form-control"name="warranty"  required="" type="text" placeholder="Warranty">
                             </div>
                             <div class="form-group">
                                 <label>Quantity</label>
-                                <input class="form-control" name="quantity"  type="text" placeholder="quantity">
+                                <input class="form-control" name="quantity" required=""  type="text" placeholder="quantity">
                             </div>
 
                             <div class="form-group">
-                                <label>catagory	</label>
-                                <textarea class="form-control"   name="catagory	"	placeholder="catagory"></textarea>
+                                <label>Catagory	</label>
+                                <select class="form-control" required="" name="catagory">
+                                    {{--  <option value="" selected=" " >add item here</option>  --}}
+                                    @foreach ($catagory as $catagory )
+
+                                        <option value="{{ $catagory->id }}">{{ $catagory->catagory_name }}</option>
+
+                                    @endforeach
+                                </select>
                             </div>
                              <div class="form-group">
                                 <button class="btn btn-success btn-block">ADD ITEM </button>

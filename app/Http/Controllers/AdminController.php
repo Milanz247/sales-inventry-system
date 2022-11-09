@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\catagory;
+use App\Models\items;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -99,7 +100,30 @@ class AdminController extends Controller
 
         public function view_item()
         {
-            return view('admin.item');
+            $catagory = catagory::all();
+            return view('admin.item',compact('catagory'));
+        }
+
+        public function add_item(request $request)
+        {
+            $items=new items;
+
+            $items->item_id	=$request->itemid;
+            $items->item_name=$request->itemname;
+            $items->item_description=$request->itemdescription;
+            $items->Buying_price=$request->buyingprice;
+            $items->Selling_price=$request->sellingprice;
+            $items->warranty=$request->warranty;
+            $items->quantity=$request->quantity;
+            $items->catagory=$request->catagory;
+
+            $items->save();
+
+            return redirect()->back()->with('message','Item added successfuly');
+
+
+
+
         }
 
 
