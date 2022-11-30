@@ -31,8 +31,8 @@
             <div class="page-content fade-in-up">
                 <div class="ibox">
                     @if(session()->has('message'))
-                    <div class="alert alert-success alert-dismissable fade show">
-                        <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Success!</strong>
+                    <div class="alert alert-danger alert-dismissable fade show">
+                        <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>!</strong>
                         {{ session()->get('message') }}
                     </div>
                     @endif

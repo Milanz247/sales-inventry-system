@@ -72,8 +72,8 @@ route::get('/admin-view-sales-report',[AdminController::class,'admin_view_sales_
 route::get('/admin-delete-invoice-histry-row/{id}',[AdminController::class,'admin_delete_invoice_histry_row']);
 route::get('/admin-filter-date-range',[AdminController::class,'admin_filter_date_range']);
 
-
-
+                        //    GRN
+route::get('/admin-view-grn',[AdminController::class,'admin_view_grn']);
 
 
 

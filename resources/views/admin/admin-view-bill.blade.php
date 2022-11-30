@@ -43,7 +43,7 @@
                   <div style="margin-top:50px; " class="col-sm">
                     @if(session()->has('message'))
                     <div class="alert alert-danger alert-dismissable fade show">
-                        <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Empty!</strong>
+                        <button class="close" data-dismiss="alert" aria-label="Close">×</button>
                         {{ session()->get('message') }}
 
                     </div>
@@ -69,7 +69,7 @@
                     <label>Select Item</label>
                     <select name="itemname" id="itemname"  class="form-control">
                         @foreach($items as $row )
-                        <option value=""></option>
+                        <option selected></option>
                          <option id={{$row->id}} value={{$row->item_name}} class="itemname custom-select">
                            {{$row->item_name}}
                          </option>

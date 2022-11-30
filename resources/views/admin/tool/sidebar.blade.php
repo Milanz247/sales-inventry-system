@@ -88,7 +88,7 @@
                     <span class="nav-label">GRN</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{ url('grn-view') }}"> Grn</a>
+                        <a href="{{ url('admin-view-grn') }}"> Grn</a>
                     </li>
 
                 </ul>

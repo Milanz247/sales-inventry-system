@@ -57,7 +57,7 @@
             <div class="tabledev">
                 <div class="ibox">
                     <div class="ibox-body">
-                        <form action="{{ url('admin-add-supplier-to-database manager') }}" method="POST">
+                        <form action="{{ url('admin-add-supplier-to-database') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label>Name</label>

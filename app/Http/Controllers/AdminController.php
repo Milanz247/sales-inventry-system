@@ -277,31 +277,39 @@ class AdminController extends Controller
 
         // check qty
 
-        if($quantity==0 or $quantity < $request->qty)
+        if($quantity==0)
         {
             return redirect()->back()->with('message','This Item Out Of Stock');
         }
         else{
+            if($quantity < $request->qty)
+            {
+                return redirect()->back()->with('message','This Quantity is not available');
 
-             // update quntity in items table
-        $data=new items;
-        $qty=$request->qty;
-        // $ic=$request->itemcode;
-        // $quantity = DB::table('items')->where('item_code',$ic)->value('quantity');
-        $data=$quantity-$qty;
-        DB::table('items')->where('item_code',$ic)->update(['quantity' => DB::raw( $data),]);
+            }
+            else
+            {
+                            // update quntity in items table
+                $data=new items;
+                $qty=$request->qty;
+                // $ic=$request->itemcode;
+                // $quantity = DB::table('items')->where('item_code',$ic)->value('quantity');
+                $data=$quantity-$qty;
+                DB::table('items')->where('item_code',$ic)->update(['quantity' => DB::raw( $data),]);
 
-        // save data to  billitemtempory table
-        $data=new billitemtempory;
+                // save data to  billitemtempory table
+                $data=new billitemtempory;
 
-        $data->item_name=$request->itemname;
-        $data->item_Code=$request->itemcode;
-        $data->warranty=$request->warranty;
-        $data->price=$request->price;
-        $data->quantity=$request->qty;
-        $data->save();
-        return redirect()->back();
-        }
+                $data->item_name=$request->itemname;
+                $data->item_Code=$request->itemcode;
+                $data->warranty=$request->warranty;
+                $data->price=$request->price;
+                $data->quantity=$request->qty;
+                $data->save();
+                return redirect()->back();
+                }
+            }
+
 
     }
        // proccesing bill view button
@@ -331,13 +339,22 @@ class AdminController extends Controller
         {
             $data=new invoicehistory;
 
-            $data->totle_qty=$request->sumqty;
-            $data->Totle_amount=$request->totle;
-            $data->description=$request->warranty;
-            $data->save();
-            billitemtempory::truncate();
-            //  model
-            return redirect()->back();
+            if($request->totle==0 or $request->sumqty==0)
+            {
+                return redirect()->back()->with('message',' Invalidate');
+
+            }
+            else {
+                $data->totle_qty=$request->sumqty;
+                $data->Totle_amount=$request->totle;
+                $data->description=$request->warranty;
+                $data->save();
+                billitemtempory::truncate();
+                //  model
+                return redirect()->back();
+            }
+
+
         }
 
 
@@ -368,7 +385,14 @@ class AdminController extends Controller
 
             }
 
+                           // GRN
 
+            public function  admin_view_grn()
+            {
+                // $data = invoicehistory::all();
+                return view('admin.admin-view-grn');
+                // ,compact('data')
+            }
 
 
 
