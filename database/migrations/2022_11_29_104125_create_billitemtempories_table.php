@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('billitemtempories', function (Blueprint $table) {
             $table->id();
             $table->string('item_Code')->unique();
             $table->string('item_name')->nullable();
-            $table->string('item_description')->nullable();
-            $table->integer('Buying_price')->nullable();
-            $table->integer('Selling_price')->nullable();
+            $table->integer('price')->nullable();
             $table->string('warranty')->nullable();
             $table->string('quantity')->nullable();
-            $table->integer('catagory_id')->nullable();
-             $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('billitemtempories');
     }
 };

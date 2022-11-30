@@ -1,7 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <base href="/public">
     @include('admin.tool.css')
     <style>
         .topdv{
@@ -22,15 +24,23 @@
         }
 
     </style>
+
 </head>
+
 <body class="fixed-navbar">
+
     <div class="page-wrapper">
+
         <!-- START HEADER-->
-            @include('admin.tool.header')
+
+        @include('admin.tool.header')
+
         <!-- END HEADER-->
 
         <!-- START SIDEBAR-->
-            @include('admin.tool.sidebar')
+
+          @include('admin.tool.sidebar')
+
         <!-- END SIDEBAR-->
 
         <div class="content-wrapper">
@@ -43,21 +53,21 @@
                 </div>
                 @endif
 
-                <h2 class="h2top">Create New User</h2>
+                <h2 class="h2top">Update Supplier</h2>
             </div>
             <div class="tabledev">
                 <div class="ibox">
                     <div class="ibox-body">
-                        <form action="{{ url('add_user') }}" method="POST">
+                        <form action="{{ url('admin-save-update-supplier-to-database', $data->id) }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" name="name" type="text" placeholder="name">
+                                <input class="form-control" value="{{ $data->name}}" name="name" type="text" placeholder="name">
                             </div>
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input id="email" type="email" placeholder="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" value="{{ $data->email}}" type="email" placeholder="email" class="form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -68,40 +78,21 @@
 
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input class="form-control" name="phone"  type="Number" placeholder="phone">
+                                <input class="form-control" value="{{ $data->phone}}" name="phone"  type="Number" placeholder="phone">
                             </div>
-
-                            <div class="form-group">
-                                <label>Usertype</label>
-                                <input class="form-control"name="usertype"  type="text" placeholder="usertype">
-                            </div>
-                            <div class="form-group">
-                                <label>Position</label>
-                                <input class="form-control"name="position"  type="text" placeholder="position">
-                            </div>
-                            <div class="form-group">
-                                <label>Nice</label>
-                                <input class="form-control"name="Nice"  type="text" placeholder="Nice">
-                            </div>
-                            <div class="form-group">
-                                <label>Gender</label>
-                                <input class="form-control"name="Gender"  type="text" placeholder="Gender">
-                            </div>
-
-
 
                             <div class="form-group">
                                 <label>Address</label>
-                                <textarea class="form-control"   name="address" id="address" rows="3" ></textarea>
+                                <input class="form-control"   value="{{ $data->address}}" name="address" id="address" ></input>
                             </div>
 
                             <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" name="password" type="password" placeholder="Password">
+                                <label>Branch</label>
+                                <input class="form-control" value="{{ $data->branch}}" name="branch" type="text" placeholder="branch">
                             </div>
 
                             <div class="form-group">
-                                <button class="btn btn-success btn-block">ADD USER </button>
+                                <button class="btn btn-success btn-block">Save</button>
                             </div>
 
                         </form>
@@ -109,14 +100,18 @@
                 </div>
             </div>
         </div>
-        <!--  preloader -->
-            @include('admin.tool.preloader')
-        <!--  END preloader -->
 
-        <!-- script  -->
-            @include('admin.tool.script')
-    </div>
-</body>
+    <!--  preloader -->
+
+    @include('admin.tool.preloader')
+
+    <!--  END preloader -->
+
+    <!-- script  -->
+
+     @include('admin.tool.script')
+
+
 </html>
 
 

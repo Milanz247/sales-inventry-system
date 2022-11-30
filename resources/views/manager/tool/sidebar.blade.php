@@ -9,37 +9,22 @@
         </div>
         <ul class="side-menu metismenu">
             <li>
-                <a class="active" href="{{ url('admin-dashboard') }}"><i class="sidebar-item-icon fa fa-th-large"></i>
+                <a class="active" href="{{ url('manager-dashboard') }}"><i class="sidebar-item-icon fa fa-th-large"></i>
                     <span class="nav-label">Dashboard</span>
                 </a>
-            </li>
-
-            <li>
-                <a href="javascript:;"><i class="sidebar-item-icon ti-user"></i>
-                    <span class="nav-label">User Managment</span><i class="fa fa-angle-left arrow"></i></a>
-                <ul class="nav-2-level collapse">
-                    <li>
-                        <a href="{{ url('view-users') }}">Users</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('add-new-user-form') }}">Add New User</a>
-                    </li>
-
-
-                </ul>
             </li>
             <li>
                 <a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
                     <span class="nav-label">Stock Managment</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{ url('admin-view-items') }}"> Items</a>
+                        <a href="{{ url('manager-view-items') }}"> Items</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-view-add-new-item-form') }}">Add New Item </a>
+                        <a href="{{ url('manager-view-add-new-item-form') }}">Add New Item </a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-view-catagory') }}">Category</a>
+                        <a href="{{ url('manager-view-catagory') }}">Category</a>
                     </li>
                 </ul>
             </li>
@@ -48,10 +33,10 @@
                     <span class="nav-label">supplier Management</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{ url('admin-view-supplier') }}">Suppliers</a>
+                        <a href="{{ url('manager-view-supplier') }}">Suppliers</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-view-add-supplier-form') }}">Add new supplier</a>
+                        <a href="{{ url('manager-view-add-supplier-form') }}">Add new supplier</a>
                     </li>
                 </ul>
             </li>
@@ -60,10 +45,10 @@
                     <span class="nav-label">Bill</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{ url('admin-view-billing') }}">Create Bill</a>
+                        <a href="{{ url('manager-view-billing') }}">Create Bill</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-view-process-bill')}} ">View Invoices</a>
+                        <a href="cashier-view-process-bill">Processing Bill</a>
                     </li>
                 </ul>
             </li>
@@ -75,9 +60,9 @@
                         <a href="{{ url('returnitem-view') }}">return</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>--}}
             <li>
-                <a href="{{ url('admin-view-sales-report') }}"><i class="sidebar-item-icon fa fa-smile-o"></i>
+                <a href="{{ url('manager-view-sales-report')}}"><i class="sidebar-item-icon fa fa-smile-o"></i>
                     <span class="nav-label">Sales Report</span>
                 </a>
 

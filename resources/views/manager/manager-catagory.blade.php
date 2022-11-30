@@ -3,7 +3,7 @@
 
 <head>
 
-    @include('admin.tool.css')
+    @include('manager.tool.css')
     <style>
         .topdv{
             text-align: center;
@@ -40,23 +40,17 @@
 
         <!-- START HEADER-->
 
-        @include('admin.tool.header')
+        @include('manager.tool.header')
 
         <!-- END HEADER-->
 
         <!-- START SIDEBAR-->
 
-          @include('admin.tool.sidebar')
+          @include('manager.tool.sidebar')
 
         <!-- END SIDEBAR-->
 
-
         <div class="content-wrapper">
-
-
-
-
-
             <div class="topdv">
                 @if(session()->has('message'))
                 <div class="alert alert-success alert-dismissable fade show">
@@ -72,7 +66,7 @@
             <div class="tabledev">
                 <div class="ibox">
                     <div class="ibox-body">
-                        <form action="{{ url('add_catagory') }}" method="post">
+                        <form action="{{ url('manager-add-catagory') }}" method="post">
                             @csrf
                             <div class="addfrm">
                                 <input class="form-control" name="catagory" type="text" placeholder="Enter Catagory">
@@ -109,7 +103,7 @@
 
                         <td width="150">
 
-                            <a onclick="return confirm ('Are you sure to Delete')" href="{{ url('delete_catagory',$data->id) }}" onclick="confirm('Are you sure?')">
+                            <a onclick="return confirm ('Are you sure to Delete')" href="{{ url('manager-delete-catagory',$data->id) }}" onclick="confirm('Are you sure?')">
                                 <button class="btn btn-danger">Delete</button>
                             </a>
                         </td>
@@ -118,20 +112,17 @@
                 </tbody>
             </table>
             </div>
-
-
-
-        </div>
+      </div>
 
     <!--  preloader -->
 
-    @include('admin.tool.preloader')
+    @include('manager.tool.preloader')
 
     <!--  END preloader -->
 
     <!-- script  -->
 
-     @include('admin.tool.script')
+     @include('manager.tool.script')
 
 
 </html>

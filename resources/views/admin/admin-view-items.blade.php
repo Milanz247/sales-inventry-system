@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,8 @@
 </head>
 
 <body class="fixed-navbar">
-  <div class="page-wrapper">
+
+    <div class="page-wrapper">
 
         <!-- START HEADER-->
 
@@ -24,7 +26,7 @@
 
         <div class="content-wrapper">
             <div class="page-heading">
-                <h1 class="page-title">User Table</h1>
+                <h1 class="page-title">Items Table</h1>
             </div>
             <div class="page-content fade-in-up">
                 <div class="ibox">
@@ -37,7 +39,7 @@
                 </div>
             </div>
             <div class="col">
-                <form action="{{ url('user_serach') }}" method="Get">
+                <form action="{{url('admin-search-items')}} " method="">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="search" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
@@ -54,54 +56,56 @@
                 <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Nice</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>gender</th>
-                            <th>Posision</th>
+
+                            <th>item_Code</th>
+                            <th>item_name</th>
+                            <th>item_description</th>
+                            <th>Buying_price</th>
+                            <th>Selling_price</th>
+                            <th>warranty</th>
+                            <th>quantity</th>
+                            <th>catagory_id</th>
                             <th> Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Nice</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>gender</th>
-                            <th>Posision</th>
+
+                            <th>item_Code</th>
+                            <th>item_name</th>
+                            <th>item_description</th>
+                            <th>Buying_price</th>
+                            <th>Selling_price</th>
+                            <th>warranty</th>
+                            <th>quantity</th>
+                            <th>catagory_id</th>
                             <th> Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-
-                        @if($users->count()):
-                        @foreach ($users as $index =>$users):
+                        @foreach ( $items as  $items):
                         <tr>
-                            <th scope='row'>{{ $index + 1 }}</th>
-                            <td>{{ $users->name }}</td>
-                            <td>{{ $users->Nice }}</td>
-                            <td>{{ $users->email }}</td>
-                            <td>{{ $users->address }}</td>
-                            <td>{{ $users->phone }}</td>
-                            <td>{{ $users->Gender }}</td>
-                            <td>{{ $users->position }}</td>
+
+                            <td>{{ $items->item_Code }}</td>
+                            <td>{{ $items->item_name }}</td>
+                            <td>{{ $items->item_description }}</td>
+                            <td>{{ $items->Buying_price	 }}</td>
+                            <td>{{ $items->Selling_price }}</td>
+                            <td>{{ $items->warranty }}</td>
+                            <td>{{ $items->quantity }}</td>
+                            <td>{{ $items->catagory_name }}</td>
+
                             <td width="150">
-                                <a href="#">
+                                <a href="{{ url('admin-view-update-form',$items->id) }}">
                                     <button class="btn btn-info">Edit</button>
                                 </a>
-                                <a href="{{ url('delete_user',$users->id) }}" onclick="return confirm ('Are you sure to Delete')">
+                                <a href="{{ url('admin-delete-items',$items->id) }}" onclick="return confirm ('Are you sure to Delete')">
                                     <button class="btn btn-danger">Delete</button>
                                 </a>
                             </td>
                         </tr>
                         @endforeach
-                      @endif
+
 
                     </tbody>
                 </table>
@@ -120,7 +124,7 @@
                     </ul>
                </nav>
             </div>
-        </div>
+       </div>
 
     <!--  preloader -->
 
@@ -129,11 +133,10 @@
     <!--  END preloader -->
 
     <!-- script  -->
+
      @include('admin.tool.script')
-   </div>
-</body>
+
 
 </html>
-
 
 

@@ -13,6 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,23 +27,30 @@ class HomeController extends Controller
 
      // manage user roles
 
+
+
     public function Login()
     {
         $usertype=Auth::user()->usertype;
 
+        if($usertype=='0')
+        {
+             return view('admin.admin-dashboard');
+        }
         if($usertype=='1')
         {
-             return view('admin.dashboard');
+             return view('manager.manager-dashboard');
         }
         if($usertype=='2')
         {
-             return view('cashier');
+             return view('cashier.cashier-dashboard');
         }
         else
         {
-            return view('home');
+            return view('');
         }
     }
+    
 
 
 }

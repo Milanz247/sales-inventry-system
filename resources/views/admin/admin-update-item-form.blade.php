@@ -1,7 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <base href="/public">
     @include('admin.tool.css')
     <style>
         .topdv{
@@ -22,15 +24,23 @@
         }
 
     </style>
+
 </head>
+
 <body class="fixed-navbar">
+
     <div class="page-wrapper">
+
         <!-- START HEADER-->
-            @include('admin.tool.header')
+
+        @include('admin.tool.header')
+
         <!-- END HEADER-->
 
         <!-- START SIDEBAR-->
-            @include('admin.tool.sidebar')
+
+          @include('admin.tool.sidebar')
+
         <!-- END SIDEBAR-->
 
         <div class="content-wrapper">
@@ -43,52 +53,35 @@
                 </div>
                 @endif
 
-                <h2 class="h2top">Add New Item</h2>
+                <h2 class="h2top">Update Item</h2>
             </div>
             <div class="tabledev">
                 <div class="ibox">
                     <div class="ibox-body">
-                        <form action="{{ url('add_item') }}" method="POST">
+                        <form action="{{ url('admin-update-item-save-database',$data->id) }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Item id</label>
-                                <input class="form-control" name=" itemid" type="text" placeholder="Item id" required="">
+                                <label>Item Code</label>
+                                <input class="form-control"  value="{{ $data->item_Code}}" name="itemcode" type="text" placeholder=" Enter Item Code" required="">
                             </div>
                             <div class="form-group">
                                 <label>Item Name</label>
-                                <input class="form-control" name="itemname"  required="" type="text" placeholder="item name">
+                                <input class="form-control" value="{{ $data->item_name}}" name="itemname"  required="" type="text" placeholder="Enter Item Name">
                             </div>
 
 
                             <div class="form-group">
                                 <label>Item Description</label>
-                                <input class="form-control" name="itemdescription"  required="" type="text" placeholder="item description">
+                                <input class="form-control" name="itemdescription" value="{{ $data->item_description}}"  required="" type="text" placeholder="Enter item description">
                             </div>
 
-                            <div class="form-group">
-                                <label>Buying Price</label>
-                                <input class="form-control"name="buyingprice"  required="" type="text" placeholder="buying price">
-                            </div>
-                            <div class="form-group">
-                                <label>Selling Price</label>
-                                <input class="form-control"name="sellingprice"  required=""  type="text" placeholder="selling price">
-                            </div>
-                            <div class="form-group">
-                                <label>Warranty</label>
-                                <input class="form-control"name="warranty"  required="" type="text" placeholder="Warranty">
-                            </div>
-                            <div class="form-group">
-                                <label>Quantity</label>
-                                <input class="form-control" name="quantity" required=""  type="text" placeholder="quantity">
-                            </div>
-
-                            <div class="form-group">
+                             <div class="form-group">
                                 <label>Catagory	</label>
                                 <select class="form-control" required="" name="catagory">
-                                    {{--  <option value="" selected=" " >add item here</option>  --}}
+                                    {{--  <option value="" selected=" " >add item here</option> --}}
                                     @foreach ($catagory as $catagory )
 
-                                        <option value="{{ $catagory->id }}">{{ $catagory->catagory_name }}</option>
+                                        <option value="{{ $catagory->catagory_id}}">{{ $catagory->catagory_name }}</option>
 
                                     @endforeach
                                 </select>
@@ -102,14 +95,18 @@
                 </div>
             </div>
         </div>
-        <!--  preloader -->
-            @include('admin.tool.preloader')
-        <!--  END preloader -->
 
-        <!-- script  -->
-            @include('admin.tool.script')
-    </div>
-</body>
+    <!--  preloader -->
+
+    @include('admin.tool.preloader')
+
+    <!--  END preloader -->
+
+    <!-- script  -->
+
+     @include('admin.tool.script')
+
+
 </html>
 
 
