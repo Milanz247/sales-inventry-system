@@ -81,14 +81,14 @@
             <table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        {{-- <th>#</th> --}}
                         <th>Catagory Name</th>
                         <th> Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>#</th>
+                        {{-- <th>#</th> --}}
                         <th>Catagory Name</th>
                         <th> Action</th>
                     </tr>
@@ -98,7 +98,7 @@
                     @foreach ($data as $data)
                     <tr>
 
-                        <th scope='row'>1</th>
+                        {{-- <th scope='row'>1</th> --}}
                         <td>{{ $data->catagory_name }}</td>
 
                         <td width="150">

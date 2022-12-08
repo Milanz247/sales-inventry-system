@@ -13,6 +13,8 @@ use App\Models\billitemtempory;
 use App\Models\invoicehistory;
 use App\Models\grnhistry;
 use PDF;
+// use Illuminate\Support\Facades\Response;
+
 
 
 
@@ -30,9 +32,9 @@ class AdminController extends Controller
     {
         $totalqty = DB::table('invoicehistories')->sum('totle_qty');
         $totalsale = DB::table('invoicehistories')->sum('Totle_amount');
-        $From=0;
-        $To=0;
-        $data= invoicehistory::whereBetween('created_at', [$From, $To])->get();
+        // $From=0;
+        // $To=0;
+        // $data= invoicehistory::whereBetween('created_at', [$From, $To])->get();
         // dump($data);
 
         $data = [
@@ -436,6 +438,7 @@ class AdminController extends Controller
         {
             $data = billitemtempory::all();
             return view('admin.admin-view-processing-bill',compact('data'));
+            // return view('admin.admin-invoice-bill');
         }
 
         // delete prosess billtable item
@@ -460,27 +463,39 @@ class AdminController extends Controller
             }
             else {
 
-                //     $data=$request->Qty;
-                // dump($request);
-                // $item = items::get();
-                // $data = [
-                //     'title' => 'Monthly Order',
-                //     'date' => date('m/d/Y'),
-                //     'users' => $item
-                // ];
-                // $pdf = PDF::loadView('admin.admin-invoice-bill', $data);
-                // return $pdf->download('Next month oeder.pdf');
-
+                // $items = items::get();
                 $data->totle_qty=$request->sumqty;
                 $data->Totle_amount=$request->totle;
                 $data->description=$request->cname;
                 $data->save();
-                billitemtempory::truncate(); // clear full billitem tempory table
+
+
+                $cname=$request->cname;
+                $pay=$request->pay;
+                $totle=$request->totle;
+                $balance=$request->pay-$request->totle;
+                $billitemtempory = billitemtempory::get();
+                $data = [
+                    'date' => date('m/d/Y'),
+                    'billitemtempory' => $billitemtempory,
+                    'cname' => $cname,
+                    'pay' => $pay,
+                    'totle' => $totle,
+                    'balance' => $balance,
+                ];
+                $pdf = PDF::loadView('admin.admin-invoice-bill', $data);
+
+
+                billitemtempory::truncate();
+
+                return $pdf->download('Invoice Receipt.pdf');
                 return redirect()->back();
             }
 
 
         }
+
+
   // ==================================== ADMIN SALES REPORT START ============================================  //
 
             // view sales report function

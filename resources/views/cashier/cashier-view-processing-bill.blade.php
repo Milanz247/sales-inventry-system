@@ -95,7 +95,7 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <label>Pay</label>
-                                <input class="form-control" id="price" name="price" type="text" >
+                                <input class="form-control" id="price" name="pay" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <label>Customer Name</label>
-                                <input required class="form-control"type="text" name="warranty" id="warranty">
+                                <input required class="form-control"type="text" name="cname" id="cname">
                             </div>
                         </div>
                         <div class="col-sm">

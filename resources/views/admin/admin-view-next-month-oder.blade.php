@@ -44,7 +44,7 @@
                         {{-- <th>Buying_price</th>
                         <th>Selling_price</th>
                         <th>warranty</th> --}}
-                        <th>Availbe</th>
+                        <th>Available</th>
                         <th></th>
                         {{-- <th>catagory_id</th> --}}
                         {{-- <th> Action</th> --}}
@@ -52,7 +52,7 @@
                 </thead>
                 {{-- <tfoot>
                     <tr>
-
+  
                         <th>item_Code</th>
                         <th>item_name</th>
                         <th>item_description</th>

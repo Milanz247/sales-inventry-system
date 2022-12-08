@@ -71,7 +71,7 @@
                         <a href="{{ url('admin-view-billing') }}">Create Bill</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-view-process-bill')}} ">View Invoices</a>
+                        <a href="{{ url('admin-view-process-bill')}} ">Processing Bill</a>
                     </li>
                 </ul>
             </li>

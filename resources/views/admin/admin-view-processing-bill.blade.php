@@ -47,7 +47,7 @@
                             <th>price</th>
                             <th>warranty</th>
                             <th>quantity</th>
-                            <th>totle</th>
+                            <th>total</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -78,14 +78,14 @@
                     <div class="row">
                       <div class="col-sm">
                         <div class="form-group">
-                            <label>Totle</label>
+                            <label>Total</label>
                             <input class="form-control"  type="text" name="totle" id="totle" readonly>
                             {{-- <span class="form-control" id="val" name="totle"></span> --}}
                         </div>
                       </div>
                       <div class="col-sm">
                         <div class="form-group">
-                            <label>Totle Qty</label>
+                            <label>Total Qty</label>
                             {{-- <span class="form-control" id="sumqty" name="sumqty"></span> --}}
                             <input class="form-control"  type="text" name="sumqty" id="sumqty"  readonly>
                         </div>

@@ -8,6 +8,8 @@ use App\Models\items;
 use App\Models\supplier;
 use App\Models\billitemtempory;
 use App\Models\invoicehistory;
+use PDF;
+
 
 
 
@@ -105,13 +107,34 @@ class CashierController extends Controller
             return redirect()->back()->with('wrong','!!!');
         }
         else {
-            $data->totle_qty=$request->sumqty;
-            $data->Totle_amount=$request->totle;
-            $data->description=$request->warranty;
-            $data->save();
-            billitemtempory::truncate();
-            //  model
-            return redirect()->back();
+
+                // $items = items::get();
+                $data->totle_qty=$request->sumqty;
+                $data->Totle_amount=$request->totle;
+                $data->description=$request->cname;
+                $data->save();
+
+
+                $cname=$request->cname;
+                $pay=$request->pay;
+                $totle=$request->totle;
+                $balance=$request->pay-$request->totle;
+                $billitemtempory = billitemtempory::get();
+                $data = [
+                    'date' => date('m/d/Y'),
+                    'billitemtempory' => $billitemtempory,
+                    'cname' => $cname,
+                    'pay' => $pay,
+                    'totle' => $totle,
+                    'balance' => $balance,
+                ];
+                $pdf = PDF::loadView('cashier.cashier-invoice-bill', $data);
+
+
+                billitemtempory::truncate();
+
+                return $pdf->download('Invoice Receipt.pdf');
+                return redirect()->back();
         }
     }
 

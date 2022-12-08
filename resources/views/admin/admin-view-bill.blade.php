@@ -52,7 +52,7 @@
                   <div class="col-sm">
                     <div class="title">
                         <h1 style="  font-weight: 700;
-                        font-size: 50px;" >Create Bill .</h1>
+                        font-size: 30px;" >Create Bill .</h1>
                     </div>
                   </div>
                   <div style="justify-content: right;display:flex;" class="col-sm">

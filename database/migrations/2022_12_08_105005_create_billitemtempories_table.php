@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('billitemtempories', function (Blueprint $table) {
+            
             $table->id();
-            $table->string('item_Code')->unique();
+            $table->string('item_Code')->nullable();
             $table->string('item_name')->nullable();
             $table->integer('price')->nullable();
             $table->string('warranty')->nullable();

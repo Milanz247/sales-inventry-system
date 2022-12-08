@@ -35,22 +35,23 @@ class HomeController extends Controller
 
         if($usertype=='0')
         {
-             return view('admin.admin-dashboard');
+             return redirect('admin-dashboard');
         }
         if($usertype=='1')
         {
-             return view('manager.manager-dashboard');
+            return redirect('manager-dashboard');
+
         }
         if($usertype=='2')
         {
-             return view('cashier.cashier-dashboard');
+            return redirect('cashier-dashboard');
         }
         else
         {
             return view('');
         }
     }
-    
+
 
 
 }
