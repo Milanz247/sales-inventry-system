@@ -62,7 +62,7 @@
                             @csrf
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" value="{{ $data->name}}" name="name" type="text" placeholder="name">
+                                <input class="form-control" value="{{ $data->name}}" name="name" type="text" autocomplete="off" placeholder="name">
                             </div>
 
                             <div class="form-group">
@@ -86,10 +86,10 @@
                                 <input class="form-control"   value="{{ $data->address}}" name="address" id="address" ></input>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Branch</label>
                                 <input class="form-control" value="{{ $data->branch}}" name="branch" type="text" placeholder="branch">
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <button class="btn btn-success btn-block">Save</button>

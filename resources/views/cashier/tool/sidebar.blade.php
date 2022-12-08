@@ -22,7 +22,7 @@
                         <a href="{{ url('cashier-view-billing') }}">Create Bill</a>
                     </li>
                     <li>
-                        <a href=" {{ url('cashier-view-process-bill')}} "> Invoices</a>
+                        <a href=" {{ url('cashier-view-process-bill')}} ">Prossesing bill</a>
                     </li>
                 </ul>
             </li>

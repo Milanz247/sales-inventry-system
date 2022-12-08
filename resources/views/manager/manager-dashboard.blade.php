@@ -1,45 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     @include('manager.tool.css')
-
 </head>
-
 <body class="fixed-navbar">
-
     <div class="page-wrapper">
-
-        <!-- START HEADER-->
-
+        <!--HEADER-->
         @include('manager.tool.header')
 
-        <!-- END HEADER-->
-
-        <!-- START SIDEBAR-->
-
-          @include('manager.tool.sidebar')
-
-        <!-- END SIDEBAR-->
+        <!--SIDEBAR-->
+        @include('manager.tool.sidebar')
 
         <div class="content-wrapper">
-
-<h1>manager</h1>
-
+             {{-- dashboard --}}
+        @include('manager.tool.dashboad')
         </div>
 
-    <!--  preloader -->
 
-    @include('manager.tool.preloader')
+        <!--  preloader -->
+        @include('manager.tool.preloader')
 
-    <!--  END preloader -->
-
-    <!-- script  -->
-
-     @include('manager.tool.script')
-
-
+        <!-- script  -->
+        @include('manager.tool.script')
 </html>
 
 

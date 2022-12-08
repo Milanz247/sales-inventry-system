@@ -61,13 +61,13 @@
                         <form action="{{ url('update-user-save', $data->id) }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Name</label>
+                                <label>Name.</label>
                                 <input class="form-control" name="name" type="text" placeholder="name" value="{{ $data->name}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Email</label>
-                                <input value="{{ $data->email}}"  id="email" type="email" placeholder="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <label>Email.</label>
+                                <input style=" height:40px; " value="{{ $data->email}}"  id="email" type="email" placeholder="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -81,25 +81,22 @@
                                 <input value="{{ $data->phone}}" class="form-control" name="phone"  type="Number" placeholder="phone">
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Usertype</label>
                                 <input value="{{ $data->Usertype}}" class="form-control"name="usertype"  type="text" placeholder="usertype">
-                            </div>
-                            <div class="form-group">
+                            </div> --}}
+                            {{-- <div class="form-group">
                                 <label>Position</label>
                                 <input value="{{ $data->position}}" class="form-control"name="position"  type="text" placeholder="position">
-                            </div>
+                            </div> --}}
                             <div class="form-group">
-                                <label>Nice</label>
-                                <input class="form-control"name="Nice"  type="text" placeholder="Nice" value="{{ $data->Nice}}">
+                                <label>Nic.</label>
+                                <input class="form-control"name="Nice"  type="text" placeholder="Nic" value="{{ $data->Nice}}">
                             </div>
-                            <div class="form-group">
-                                <label>Gender</label>
+                            {{-- <div class="form-group">
+                                <label>Gender.</label>
                                 <input value="{{ $data->Gender}}" class="form-control" name="Gender"  type="text" placeholder="Gender">
-                            </div>
-
-
-
+                            </div> --}}
                             <div class="form-group">
                                 <label>Address</label>
                                 <input value="{{ $data->address}}" class="form-control" name="address"  type="text" placeholder="Address">
@@ -108,7 +105,7 @@
 
 
                             <div class="form-group">
-                                <button class="btn btn-success btn-block">ADD USER </button>
+                                <button class="btn btn-success btn-block">Save</button>
                             </div>
 
                         </form>

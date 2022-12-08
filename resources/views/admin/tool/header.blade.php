@@ -1,8 +1,8 @@
 <header class="header">
     <div class="page-brand">
         <a class="link" href="index.html">
-            <span class="brand">Admin
-                <span class="brand-tip">CAST</span>
+            <span class="brand">SE.
+                <span class="brand-tip">Shop</span>
             </span>
             <span class="brand-mini">AC</span>
         </a>

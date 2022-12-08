@@ -1,6 +1,11 @@
 <nav class="page-sidebar" id="sidebar">
     <div id="sidebar-collapse">
         <div class="admin-block d-flex">
+            {{-- <div class="col-xs-6 col-sm-6 col-md-6 ">
+                <span id="day"></span> : <span id="year"></span>
+                <span class="mt-4"> Time : </span><span  class="mt-4" id="time"></span>
+
+             </div> --}}
             {{--  <div>
                 <img src="./assets/img/admin-avatar.png" width="45px" />
             </div>
@@ -40,6 +45,9 @@
                     </li>
                     <li>
                         <a href="{{ url('admin-view-catagory') }}">Category</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('admin-view-next-month-order') }}">Next Month Order</a>
                     </li>
                 </ul>
             </li>
@@ -89,6 +97,9 @@
                 <ul class="nav-2-level collapse">
                     <li>
                         <a href="{{ url('admin-view-grn') }}"> Grn</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('admin-view-grn-history') }}">View Grn Historys</a>
                     </li>
 
                 </ul>

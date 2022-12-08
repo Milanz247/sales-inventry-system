@@ -59,12 +59,12 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Nice</th>
+                                <th>Nic</th>
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Phone</th>
                                 <th>gender</th>
-                                <th>Posision</th>
+                                <th>Position</th>
                                 <th> Action</th>
                             </tr>
                         </thead>
@@ -72,12 +72,12 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Nice</th>
+                                <th>Nic</th>
                                 <th>Email</th>
                                 <th>Address</th>
                                 <th>Phone</th>
                                 <th>gender</th>
-                                <th>Posision</th>
+                                <th>Position</th>
                                 <th> Action</th>
                             </tr>
                         </tfoot>

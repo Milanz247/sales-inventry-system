@@ -3,7 +3,7 @@
 
 <head>
 
-    @include('admin.tool.css')
+    @include('manager.tool.css')
     <style>
         .center{
             margin: 40px;
@@ -29,19 +29,18 @@
 
         <!-- START HEADER-->
 
-        @include('admin.tool.header')
+        @include('manager.tool.header')
 
         <!-- END HEADER-->
 
         <!-- START SIDEBAR-->
 
-          @include('admin.tool.sidebar')
+          @include('manager.tool.sidebar')
 
         <!-- END SIDEBAR-->
 
         <div class="content-wrapper">
             <div class="center">
-                <h1>GRN</h1>
                 @if(session()->has('message'))
                 <div class="alert alert-success alert-dismissable fade show">
                     <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Success!</strong>
@@ -49,9 +48,16 @@
 
                 </div>
                 @endif
+                @if(session()->has('check'))
+                <div class="alert alert-danger alert-dismissable fade show">
+                    <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Invaliide!</strong>
+                    {{ session()->get('message') }}
+
+                </div>
+                @endif
             </div>
             <div class="center">
-                <form action="admin-save-grn-data" method="post">
+                <form action="manager-save-grn-data" method="post">
                     @csrf
                     <div class="form-group">
                         <label>Select Item</label>
@@ -116,13 +122,13 @@
         </div>
         <!--  preloader -->
 
-        @include('admin.tool.preloader')
+        @include('manager.tool.preloader')
 
         <!--  END preloader -->
 
         <!-- script  -->
 
-        @include('admin.tool.script')
+        @include('manager.tool.script')
 
     </div>
 
@@ -134,7 +140,7 @@
                  var ids =   $(this).find(':selected')[0].id;
                         $.ajax({
                         type:'GET',
-                        url:'admin-grn-getPrice/{id}',
+                        url:'manager-grn-getPrice/{id}',
                         data:{id:ids},
                         dataType:'json',
                         success:function(data){

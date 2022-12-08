@@ -52,7 +52,7 @@
                 </div>
                 @endif
 
-                <h2 class="h2top">Create New Supplier</h2>
+                <h2 class="h2top">Add New Supplier</h2>
             </div>
             <div class="tabledev">
                 <div class="ibox">
@@ -85,10 +85,10 @@
                                 <textarea class="form-control"   name="address" id="address" rows="3" ></textarea>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Branch</label>
                                 <input class="form-control" name="branch" type="text" placeholder="branch">
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <button class="btn btn-success btn-block">ADD Supplier </button>

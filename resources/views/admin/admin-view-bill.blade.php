@@ -68,8 +68,8 @@
                 <div class="form-group">
                     <label>Select Item</label>
                     <select name="itemname" id="itemname"  class="form-control">
+                        <option selected>Select Item</option>
                         @foreach($items as $row )
-                        <option selected></option>
                          <option id={{$row->id}} value={{$row->item_name}} class="itemname custom-select">
                            {{$row->item_name}}
                          </option>

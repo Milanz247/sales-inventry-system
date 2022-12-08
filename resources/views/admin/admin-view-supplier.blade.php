@@ -60,7 +60,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>Branch</th>
+                            {{-- <th>Branch</th> --}}
                             <th> Action</th>
                         </tr>
                     </thead>
@@ -71,7 +71,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
-                            <th>Branch</th>
+                            {{-- <th>Branch</th> --}}
                             <th> Action</th>
                         </tr>
                     </tfoot>
@@ -85,7 +85,7 @@
                             <td>{{  $suppliers->email }}</td>
                             <td>{{  $suppliers->phone }}</td>
                             <td>{{  $suppliers->address }}</td>
-                            <td>{{ $suppliers->branch }}</td>
+                            {{-- <td>{{ $suppliers->branch }}</td> --}}
                             <td width="150">
                                 <a href="{{ url('admin-view-update-supplier-form',$suppliers->id) }}">
                                     <button class="btn btn-info">Edit</button>

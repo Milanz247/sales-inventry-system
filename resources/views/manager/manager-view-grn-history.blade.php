@@ -4,7 +4,7 @@
 
 <head>
 
-    @include('admin.tool.css')
+    @include('manager.tool.css')
 
 </head>
 
@@ -14,13 +14,13 @@
 
         <!-- START HEADER-->
 
-        @include('admin.tool.header')
+        @include('manager.tool.header')
 
         <!-- END HEADER-->
 
         <!-- START SIDEBAR-->
 
-          @include('admin.tool.sidebar')
+          @include('manager.tool.sidebar')
 
         <!-- END SIDEBAR-->
 
@@ -31,7 +31,7 @@
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12">
-                <h3 class="page-title">Invoice Report</h3>
+                <h3 class="page-title">GRN History</h3>
                 {{-- <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                     <li class="breadcrumb-item active">Invoice Report</li>
@@ -43,7 +43,7 @@
 
     <!-- Search Filter -->
 
-    <form action=" {{url('admin-filter-date-range')}} " method="get">
+    <form action=" {{url('')}} " method="get">
         <div class="row filter-row">
             <div class="col-sm-6 col-md-3">
                 <div class="form-group form-focus">
@@ -64,15 +64,10 @@
             <div class="col-sm-6 col-md-3">
                 <button class="btn btn-warning" style="width: 50%; ">Search</button>
 
-            </div>
-            <div class="col-md-3">
-                <a href="{{ url('admin-generate-sales-report-pdf') }}">
-                    <button style="width:170px;" type="button" class="btn btn-warning">Download Document</button>
-                </a>
+
             </div>
          </div>
     </form>
-
     <!-- /Search Filter -->
 
     <div class="row">
@@ -82,26 +77,26 @@
                     <thead>
                         <tr>
                             {{-- <th>id</th> --}}
-                            <th>Totle Quantity</th>
-                            <th>Totle Amount</th>
-                            <th>Customer Name</th>
-                            <th>Date</th>
+                            <th>Suplier</th>
+                            <th>Item Code</th>
+                            <th>Buying Price</th>
+                            <th>Selling Price</th>
+                            <th>Warranty</th>
+                            <th>Quantity</th>
+                            <th>Totle Price</th>
                             {{-- <th class="text-right">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody> @foreach ( $data as  $data):
                         <tr>
                             {{-- <td>{{ $data->id }}</td> --}}
-                            <td>{{ $data->totle_qty }}</td>
-                            <td>{{ $data->Totle_amount }}</td>
-                            <td>{{ $data->description	 }}</td>
-                            <td>{{ $data->created_at }}</td>
-
-                            <td width="150">
-                                <a href="{{ url('admin-delete-invoice-histry-row',$data->id) }}" onclick="return confirm ('Are you sure to Delete')">
-                                    <button class="btn btn-danger">Delete</button>
-                                </a>
-                            </td>
+                            <td>{{ $data->supplier }}</td>
+                            <td>{{ $data->item_code }}</td>
+                            <td>{{ $data->Buying_price	 }}</td>
+                            <td>{{ $data->Selling_price }}</td>
+                            <td>{{ $data->warranty }}  years</td>
+                            <td>{{ $data->quantity }}</td>
+                            <td>Rs : {{ $data->totle_price}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -115,13 +110,13 @@
 
     <!--  preloader -->
 
-    @include('admin.tool.preloader')
+    @include('manager.tool.preloader')
 
     <!--  END preloader -->
 
     <!-- script  -->
 
-     @include('admin.tool.script')
+     @include('manager.tool.script')
 
 
 </html>

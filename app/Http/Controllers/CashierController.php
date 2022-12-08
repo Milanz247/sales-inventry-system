@@ -100,19 +100,22 @@ class CashierController extends Controller
     public function cashier_save_billhistory(request $request )
     {
         $data=new invoicehistory;
-
-        $data->totle_qty=$request->sumqty;
-        $data->Totle_amount=$request->totle;
-        $data->description=$request->warranty;
-        $data->save();
-         billitemtempory::truncate();
-        //  model
-        return redirect()->back();
+        if($request->totle==0 or $request->sumqty==0)
+        {
+            return redirect()->back()->with('wrong','!!!');
+        }
+        else {
+            $data->totle_qty=$request->sumqty;
+            $data->Totle_amount=$request->totle;
+            $data->description=$request->warranty;
+            $data->save();
+            billitemtempory::truncate();
+            //  model
+            return redirect()->back();
+        }
     }
 
-
-                            //    sales report
-
+    //    sales report
     public function cashier_view_sales_report()
     {
         $data = invoicehistory::all();

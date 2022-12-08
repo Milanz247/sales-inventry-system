@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Redirect,Response;
 use App\Models\billitemtempory;
 use App\Models\invoicehistory;
+use App\Models\grnhistry;
+use PDF;
 
 
 class ManagerController extends Controller
@@ -197,9 +199,7 @@ class ManagerController extends Controller
        public function  manager_view_update_supplier_form($id)
        {
            $data=supplier::find($id);
-
            return  view(' manager.manager-view-update-supplier-form',compact('data'));
-
        }
        public function  manager_save_update_supplier_to_database(request $request,$id)
        {
@@ -227,89 +227,112 @@ class ManagerController extends Controller
            return view(' manager.manager-view-supplier',compact('suppliers'));
        }
 
-    //    billing
 
-    public function manager_view_billing()
-    {
-       $data['items'] = DB::table('items')->get();
-        return view("manager.manager-view-bill",$data);
-    }
-    public function manager_getPrice()
-    {
-        $getPrice = $_GET['id'];
-        $price  = DB::table('items')->where('id', $getPrice)->get();
-        return Response::json($price);
-    }
-    public function manager_add_item_to_bill(request $request )
-    {
 
-        $ic=$request->itemcode;
-        $quantity = DB::table('items')->where('item_code',$ic)->value('quantity');
-
-        // check qty
-
-        if($quantity==0 or $quantity < $request->qty)
+        //    billing
+        public function manager_view_billing()
         {
-            return redirect()->back()->with('message','This Item Out Of Stock');
+        $data['items'] = DB::table('items')->get();
+            return view("manager.manager-view-bill",$data);
         }
-        else{
+        public function manager_getPrice()
+        {
+            $getPrice = $_GET['id'];
+            $price  = DB::table('items')->where('id', $getPrice)->get();
+            return Response::json($price);
+        }
+        public function manager_add_item_to_bill(request $request )
+        {
 
-             // update quntity in items table
-        $data=new items;
-        $qty=$request->qty;
-        // $ic=$request->itemcode;
-        // $quantity = DB::table('items')->where('item_code',$ic)->value('quantity');
-        $data=$quantity-$qty;
-        DB::table('items')->where('item_code',$ic)->update(['quantity' => DB::raw( $data),]);
+            $ic=$request->itemcode;
+            $quantity = DB::table('items')->where('item_code',$ic)->value('quantity');
 
-        // save data to  billitemtempory table
-        $data=new billitemtempory;
+            // check qty
 
-        $data->item_name=$request->itemname;
-        $data->item_Code=$request->itemcode;
-        $data->warranty=$request->warranty;
-        $data->price=$request->price;
-        $data->quantity=$request->qty;
-        $data->save();
-        return redirect()->back();
+            if($quantity==0 or $quantity < $request->qty)
+            {
+                return redirect()->back()->with('message','This Item Out Of Stock');
+            }
+            else{
+
+                // update quntity in items table
+            $data=new items;
+            $qty=$request->qty;
+            // $ic=$request->itemcode;
+            // $quantity = DB::table('items')->where('item_code',$ic)->value('quantity');
+            $data=$quantity-$qty;
+            DB::table('items')->where('item_code',$ic)->update(['quantity' => DB::raw( $data),]);
+
+            // save data to  billitemtempory table
+            $data=new billitemtempory;
+
+            $data->item_name=$request->itemname;
+            $data->item_Code=$request->itemcode;
+            $data->warranty=$request->warranty;
+            $data->price=$request->price;
+            $data->quantity=$request->qty;
+            $data->save();
+            return redirect()->back();
+            }
+
+        }
+        // proccesing bill view button
+        public function manager_processing_billbutton()
+        {
+            return redirect('manager-view-process-bill');
         }
 
-    }
-       // proccesing bill view button
-       public function manager_processing_billbutton()
-       {
-           return redirect('manager-view-process-bill');
-       }
 
 
+        public function manager_view_process_bill()
+        {
+            $data = billitemtempory::all();
+            return view('manager.manager-view-processing-bill',compact('data'));
 
-    public function manager_view_process_bill()
-    {
-        $data = billitemtempory::all();
-        return view('manager.manager-view-processing-bill',compact('data'));
+        }
+        // delete prosess billtable item
+        public function  manager_delete_processbill_row_item($id)
+        {
+            $data=billitemtempory::find($id);
+            $data->delete();
+            return redirect()->back();
+        }
 
-    }
-    // delete prosess billtable item
-    public function  manager_delete_processbill_row_item($id)
-    {
-        $data=billitemtempory::find($id);
-        $data->delete();
-        return redirect()->back();
-    }
+        // save bill histoty
+        public function manager_save_billhistory(request $request )
+        {
+            $data=new invoicehistory;
 
-    // save bill histoty
-    public function manager_save_billhistory(request $request )
-    {
-        $data=new invoicehistory;
+            if($request->totle==0 or $request->sumqty==0)
+            {
+                return redirect()->back()->with('wrong',' Invalidate');
 
-        $data->totle_qty=$request->sumqty;
-        $data->Totle_amount=$request->totle;
-        $data->description=$request->warranty;
-        $data->save();
-         billitemtempory::truncate();
-        //  model
-        return redirect()->back();
-    }
+            }
+            else {
+                $data->totle_qty=$request->sumqty;
+                $data->Totle_amount=$request->totle;
+                $data->description=$request->warranty;
+                $data->save();
+                billitemtempory::truncate();
+                //  model
+                return redirect()->back();
+            }
+
+
+        }
+        // save bill histoty
+        // public function manager_save_billhistory(request $request )
+        // {
+        //     $data=new invoicehistory;
+
+        //     $data->totle_qty=$request->sumqty;
+        //     $data->Totle_amount=$request->totle;
+        //     $data->description=$request->warranty;
+        //     $data->save();
+        //      billitemtempory::truncate();
+        //     //  model
+        //     return redirect()->back();
+        // }
 
                       // billing
         public function manager_view_sales_report()
@@ -335,6 +358,91 @@ class ManagerController extends Controller
 
         }
 
+                    // gRN
+        public function  manager_view_grn()
+        {
+            $data['items'] = DB::table('items')->get();
+            $suppliers = supplier::all();
+            return view("manager.manager-view-grn",$data,compact('suppliers') );
+
+
+        }
+        public function manager_grn_getPrice()
+        {
+            $getPrice = $_GET['id'];
+            $price  = DB::table('items')->where('id', $getPrice)->get();
+            return Response::json($price);
+        }
+
+        public function manager_save_grn_data(request $request)
+        {
+            $check=$request->supplier;
+                if($check=="Select Supplier")
+                {
+                    return redirect()->back()->with('check',' Please Select Supplier');
+                }
+                else{
+                // save grn history
+                $grnhistry=new grnhistry;
+
+                $grnhistry->supplier=$request->supplier;
+                $grnhistry->item_code=$request->itemcode;
+                $grnhistry->Buying_price=$request->buyingprice;
+                $grnhistry->Selling_price=$request->sellingprice;
+                $grnhistry->warranty=$request->warranty;
+                $grnhistry->quantity=$request->qty;
+                $grnhistry->totle_price=$request->buyingprice*$request->qty;
+                $grnhistry->save();
+
+
+
+                // update item table
+                $Itemc=$request->itemcode;
+                $buyingprice=$request->buyingprice;
+                $sellingprice=$request->sellingprice;
+                $warranty=$request->warranty;
+                $qty=$request->qty;
+
+                //  get qty value and add new value
+                $quantity = DB::table('items')->where('item_code',$Itemc)->value('quantity');
+                $qty=$quantity+$qty;
+
+                    //  save data to item table
+                DB::table('items')->where('item_code',$Itemc)->update([
+                    'Buying_price' => DB::raw( $buyingprice),
+                    'Selling_price' => DB::raw( $sellingprice),
+                    'warranty' => DB::raw( $warranty),
+                    'quantity' => DB::raw( $qty)
+                ]);
+                // return redirect()->back();
+                return redirect()->back()->with('message','succesfully added');
+        }
+
+        }
+        public function manager_view_grn_history()
+        {
+            $data = grnhistry::all();
+            return view('manager.manager-view-grn-history',compact('data'));
+        }
+
+
+
+
+        //generate pdf for next month order
+        public function generatePDF()
+        {
+            $item = items::get();
+
+            $data = [
+                'title' => 'Welcome to ItSolutionStuff.com',
+                'date' => date('m/d/Y'),
+                'users' => $item
+            ];
+
+            $pdf = PDF::loadView('manager.myPDF', $data);
+
+            return $pdf->download('itsolutionstuff.pdf');
+        }
 
 
 
@@ -347,10 +455,16 @@ class ManagerController extends Controller
 
 
 
+    //    get next month order
+    public function manager_view_next_month_order()
+    {
+     $items = DB::table('items')
+     ->where('quantity', '<', 10)
+     ->get();
 
+      return view('manager.manager-view-next-month-oder',compact('items'));
 
-
-
+    }
 
 
 }

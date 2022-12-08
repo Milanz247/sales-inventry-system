@@ -93,7 +93,7 @@
                       <div class="col-sm">
                         <div class="form-group">
                             <label>Pay</label>
-                            <input class="form-control" id="price" name="price" type="text" >
+                            <input class="form-control" id="pay" name="pay" type="text" >
                         </div>
                       </div>
                     </div>
@@ -103,13 +103,13 @@
                     <div class="row">
                       <div class="col-sm">
                         <div class="form-group">
-
+                            {{-- <input required class="form-control"type="text" name="reme" id="reme"> --}}
                         </div>
                       </div>
                       <div class="col-sm">
                         <div class="form-group">
                             <label>Customer Name</label>
-                            <input required class="form-control"type="text" name="warranty" id="warranty">
+                            <input required class="form-control"type="text" name="cname" id="cname">
                         </div>
                       </div>
                       <div class="col-sm">
@@ -134,18 +134,27 @@
      @include('admin.tool.script')
 <script>
 
-            var table = document.getElementById("table"), sumVal = 0 ,sumqty = 0,ithiri=0;
+            var table = document.getElementById("table"), sumVal = 0 ,sumqty = 0;
             for(var i = 1; i < table.rows.length; i++)
             {
                 sumVal = sumVal + parseInt(table.rows[i].cells[5].innerHTML);
                 sumqty = sumqty + parseInt(table.rows[i].cells[4].innerHTML);
-            }
 
+            }
             document.getElementById("totle").value = sumVal;
             document.getElementById("sumqty").value=  sumqty;
 
 
          </script>
+         <script>
+
+// function(){
+//              var pay=$("#pay").val();
+//             document.getElementById("reme").value= sumVal-pay;
+
+
+//             };
+//          </script>
 
 
 </html>

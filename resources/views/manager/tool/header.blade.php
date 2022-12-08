@@ -136,7 +136,7 @@
             <li class="dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
                     <img src="./assets/img/admin-avatar.png" />
-                    <span></span>Cashier<i class="fa fa-angle-down m-l-5"></i></a>
+                    <span></span>Manager<i class="fa fa-angle-down m-l-5"></i></a>
                 <ul class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

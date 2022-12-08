@@ -26,6 +26,9 @@
                     <li>
                         <a href="{{ url('manager-view-catagory') }}">Category</a>
                     </li>
+                    <li>
+                        <a href="{{ url('manager-view-next-month-order') }}">Category</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -48,7 +51,7 @@
                         <a href="{{ url('manager-view-billing') }}">Create Bill</a>
                     </li>
                     <li>
-                        <a href="cashier-view-process-bill">Processing Bill</a>
+                        <a href=" {{ url('manager-view-process-bill')}} ">Processing Bill</a>
                     </li>
                 </ul>
             </li>
@@ -65,17 +68,17 @@
                 <a href="{{ url('manager-view-sales-report')}}"><i class="sidebar-item-icon fa fa-smile-o"></i>
                     <span class="nav-label">Sales Report</span>
                 </a>
-
-
             </li>
             <li>
                 <a href="javascript:;"><i class="sidebar-item-icon fa fa-envelope"></i>
                     <span class="nav-label">GRN</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul class="nav-2-level collapse">
                     <li>
-                        <a href="{{ url('grn-view') }}"> Grn</a>
+                        <a href="{{ url('manager-view-grn') }}"> Grn</a>
                     </li>
-
+                    <li>
+                        <a href="{{ url('manager-view-grn-history') }}">View Grn Historys</a>
+                    </li>
                 </ul>
             </li>
         </ul>

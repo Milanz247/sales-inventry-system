@@ -20,12 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/redirect', [App\Http\Controllers\HomeController::class, 'Login'])->name('redirect');
 
+//=================================================== ADMIN ROUTES START =======================================================//
 
-                           // admin routes
 //admin dashboard
 route::get('/admin-dashboard',[AdminController::class,'admin_dashboard']);
 
                            // user managment
+//user managment
 route::get('/view-users',[AdminController::class,'view_admin_users']);
 route::get('/add-new-user-form',[AdminController::class,'add_new_user_form']);
 route::post('/save-user-to-database',[AdminController::class,'save_user_to_database']);
@@ -48,6 +49,9 @@ route::post('/admin-add-item-to-database',[AdminController::class,'admin_add_ite
 route::get('admin-view-update-form/{id}',[AdminController::class,'admin_view_update_form']);
 route::post('/admin-update-item-save-database/{id}',[AdminController::class,'admin_update_item_save_database']);
 route::get('/admin-search-items',[AdminController::class,'admin_search_item']);
+route::get('/admin-view-next-month-order',[AdminController::class,'admin_view_next_month_order']);
+Route::get('admin-generate-pdf',[AdminController::class,'admin_generatePDF']);
+
 
                           // supplier managment
 route::get('/admin-view-supplier',[AdminController::class,'admin_view_supplier']);
@@ -58,7 +62,7 @@ route::post('/admin-save-update-supplier-to-database/{id}',[AdminController::cla
 route::get('/admin-delete-supplier/{id}',[AdminController::class,'admin_delete_supplier']);
 route::get('/admin-search-supplier',[AdminController::class,'admin_search_supplier']);
 
-// //billing
+                           // billing
 route::get('/admin-view-billing',[AdminController::class,'admin_view_billing']);
 route::get('/admin-getPrice/{id}',[AdminController::class,'admin_getPrice']);
 route::POST('/admin-add-item-to-bill',[AdminController::class,'admin_add_item_to_bill']);
@@ -66,22 +70,32 @@ route::get('/admin-view-process-bill',[AdminController::class,'admin_view_proces
 route::POST('/admin-save-billhistory',[AdminController::class,'admin_save_billhistory']);
 route::get('/admin-processing-bill-button',[AdminController::class,'admin_processing_billbutton']);
 route::get('/admin-delete-processbill-row-item/{id}',[AdminController::class,'admin_delete_processbill_row_item']);
+route::get('/admin-update-qty/{id}',[AdminController::class,'admin_update_qty']);
 
-//sales report
+                           //sales report
 route::get('/admin-view-sales-report',[AdminController::class,'admin_view_sales_report']);
 route::get('/admin-delete-invoice-histry-row/{id}',[AdminController::class,'admin_delete_invoice_histry_row']);
 route::get('/admin-filter-date-range',[AdminController::class,'admin_filter_date_range']);
+route::get('/admin-generate-sales-report-pdf',[AdminController::class,'admin_generate_sales_report_pdf']);
 
-                        //    GRN
+
+                            //    GRN
 route::get('/admin-view-grn',[AdminController::class,'admin_view_grn']);
+route::get('/admin-grn-getPrice/{id}',[AdminController::class,'admin_grn_getPrice']);
+route::post('/admin-save-grn-data',[AdminController::class,'admin_save_grn_data']);
+route::get('/admin-view-grn-history',[AdminController::class,'admin_view_grn_history']);
+
+//=================================================== ADMIN ROUTES END =======================================================//
 
 
 
-                               // manager routs
+//=================================================== MANAGER ROUTES START =======================================================//
+
+
 //manager dashboard
 route::get('/manager-dashboard',[ManagerController::class,'manager_dashboard']);
 
-                           // stock managment
+                             // stock managment
 //catagory routes
 route::get('/manager-view-catagory',[ManagerController::class,'manager_view_catagory']);
 route::post('/manager-add-catagory',[ManagerController::class,'manager_add_catagory']);
@@ -95,6 +109,8 @@ route::post('/manager-add-item-to-database',[ManagerController::class,'manager_a
 route::get('manager-view-update-form/{id}',[ManagerController::class,'manager_view_update_form']);
 route::post('/manager-update-item-save-database/{id}',[ManagerController::class,'manager_update_item_save_database']);
 route::get('/manager-search-items',[ManagerController::class,'manager_search_item']);
+route::get('/manager-view-next-month-order',[ManagerController::class,'manager_view_next_month_order']);
+Route::get('generate-pdf', [ManagerController::class, 'generatePDF']);
 
                               // Supplier managmet
 
@@ -106,20 +122,30 @@ route::post('/manager-save-update-supplier-to-database/{id}',[ManagerController:
 route::get('/manager-delete-supplier/{id}',[ManagerController::class,'manager_delete_supplier']);
 route::get('/manager-search-supplier',[ManagerController::class,'manager_search_supplier']);
 
-// billing
+                                 // billing
+
 route::get('/manager-view-billing',[ManagerController::class,'manager_view_billing']);
 route::get('/manager-getPrice/{id}',[ManagerController::class,'manager_getPrice']);
 route::POST('/manager-add-item-to-bill',[ManagerController::class,'manager_add_item_to_bill']);
 route::get('/manager-view-process-bill',[ManagerController::class,'manager_view_process_bill']);
 route::POST('/manager-save-billhistory',[ManagerController::class,'manager_save_billhistory']);
 route::get('/manager-processing-bill-button',[ManagerController::class,'manager_processing_billbutton']);
-route::get('/manager-delete-processbill-row-item/{id}',[ManagerController::class,'manager_delete_processbill_row_item']);
+// route::get('/manager-delete-processbill-row-item/{id}',[ManagerController::class,'manager_delete_processbill_row_item']);
 
-//sales report
+                                 //sales report
+
 route::get('/manager-view-sales-report',[ManagerController::class,'manager_view_sales_report']);
 route::get('/manager-delete-invoice-histry-row/{id}',[ManagerController::class,'manager_delete_invoice_histry_row']);
 route::get('/manager-filter-date-range',[ManagerController::class,'manager_filter_date_range']);
 
+                                  //    GRN
+
+route::get('/manager-view-grn',[ManagerController::class,'manager_view_grn']);
+route::get('/manager-grn-getPrice/{id}',[ManagerController::class,'manager_grn_getPrice']);
+route::post('/manager-save-grn-data',[ManagerController::class,'manager_save_grn_data']);
+route::get('/manager-view-grn-history',[ManagerController::class,'manager_view_grn_history']);
+
+//=================================================== MANAGER ROUTES END ===================================================//
 
 
                           // cashier routes

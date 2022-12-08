@@ -9,20 +9,12 @@
 </head>
 
 <body class="fixed-navbar">
-
     <div class="page-wrapper">
-
-        <!-- START HEADER-->
-
+        <!-- HEADER-->
         @include('cashier.tool.header')
 
-        <!-- END HEADER-->
-
         <!-- START SIDEBAR-->
-
-          @include('cashier.tool.sidebar')
-
-        <!-- END SIDEBAR-->
+        @include('cashier.tool.sidebar')
 
         <div class="content-wrapper">
             <div class="page-heading">
@@ -34,6 +26,16 @@
                     <div class="alert alert-success alert-dismissable fade show">
                         <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Success!</strong>
                         {{ session()->get('message') }}
+                    </div>
+                    @endif
+                </div>
+            </div>
+            <div class="page-content fade-in-up">
+                <div class="ibox">
+                    @if(session()->has('wrong'))
+                    <div class="alert alert-danger alert-dismissable fade show">
+                        <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Invalid Data</strong>
+                        {{ session()->get('wrong') }}
                     </div>
                     @endif
                 </div>
@@ -76,78 +78,70 @@
                 @csrf
                 <div class="container">
                     <div class="row">
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <label>Totle</label>
-                            <input class="form-control"  type="text" name="totle" id="totle" readonly>
-                            {{-- <span class="form-control" id="val" name="totle"></span> --}}
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label>Totle</label>
+                                <input class="form-control"  type="text" name="totle" id="totle" readonly>
+                                {{-- <span class="form-control" id="val" name="totle"></span> --}}
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <label>Totle Qty</label>
-                            {{-- <span class="form-control" id="sumqty" name="sumqty"></span> --}}
-                            <input class="form-control"  type="text" name="sumqty" id="sumqty"  readonly>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label>Totle Qty</label>
+                                {{-- <span class="form-control" id="sumqty" name="sumqty"></span> --}}
+                                <input class="form-control"  type="text" name="sumqty" id="sumqty"  readonly>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <label>Pay</label>
-                            <input class="form-control" id="price" name="price" type="text" >
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label>Pay</label>
+                                <input class="form-control" id="price" name="price" type="text" >
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                  <br>
+                </div>
+                <br>
                 <div class="container">
                     <div class="row">
-                      <div class="col-sm">
-                        <div class="form-group">
+                        <div class="col-sm">
+                            <div class="form-group">
 
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <label>Customer Name</label>
-                            <input required class="form-control"type="text" name="warranty" id="warranty">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label>Customer Name</label>
+                                <input required class="form-control"type="text" name="warranty" id="warranty">
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-sm">
-                        <div class="form-group">
-                            <button class="btn btn-warning" style="width: 100%; margin-top:28px;">Print Bill</button>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <button class="btn btn-warning" style="width: 100%; margin-top:28px;">Print Bill</button>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
             </form>
-
        </div>
+        <!--  preloader -->
+        @include('cashier.tool.preloader')
 
-    <!--  preloader -->
+        <!-- script  -->
+        @include('cashier.tool.script')
 
-    @include('cashier.tool.preloader')
-
-    <!--  END preloader -->
-
-    <!-- script  -->
-
-     @include('cashier.tool.script')
 <script>
-
-            var table = document.getElementById("table"), sumVal = 0 ,sumqty = 0,ithiri=0;
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                sumVal = sumVal + parseInt(table.rows[i].cells[5].innerHTML);
-                sumqty = sumqty + parseInt(table.rows[i].cells[4].innerHTML);
-            }
-
-            document.getElementById("totle").value = sumVal;
-            document.getElementById("sumqty").value=  sumqty;
-
-
-         </script>
-
-
+     var table = document.getElementById("table"), sumVal = 0 ,sumqty = 0,ithiri=0;
+   for(var i = 1; i < table.rows.length; i++)
+      {
+        sumVal = sumVal + parseInt(table.rows[i].cells[5].innerHTML);
+        sumqty = sumqty + parseInt(table.rows[i].cells[4].innerHTML);
+      }
+        document.getElementById("totle").value = sumVal;
+        document.getElementById("sumqty").value=  sumqty;
+ </script>
 </html>
+
+
+
 
 

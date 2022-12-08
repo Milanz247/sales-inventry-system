@@ -1,28 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     @include('manager.tool.css')
-
 </head>
-
 <body class="fixed-navbar">
-
     <div class="page-wrapper">
 
-        <!-- START HEADER-->
-
+        <!--HEADER-->
         @include('manager.tool.header')
 
-        <!-- END HEADER-->
-
-        <!-- START SIDEBAR-->
-
-          @include('manager.tool.sidebar')
-
-        <!-- END SIDEBAR-->
+        <!--SIDEBAR-->
+        @include('manager.tool.sidebar')
 
         <div class="content-wrapper">
             <div class="page-heading">
@@ -33,6 +22,12 @@
                     @if(session()->has('message'))
                     <div class="alert alert-success alert-dismissable fade show">
                         <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Success!</strong>
+                        {{ session()->get('message') }}
+                    </div>
+                    @endif
+                    @if(session()->has('wrong'))
+                    <div class="alert alert-danger alert-dismissable fade show">
+                        <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Invalide Data</strong>
                         {{ session()->get('message') }}
                     </div>
                     @endif
@@ -61,10 +56,9 @@
                             <td>{{ $items->quantity }}</td>
                             <td> {{$items->price*$items->quantity }} </td>
                             <td width="150">
-
-                                <a href="{{ url('manager-delete-processbill-row-item',$items->id) }}" onclick="return confirm ('Are you sure to Delete')">
-                                    <button class="btn btn-danger">Delete</button>
-                                </a>
+                                    <a href="{{ url('manager-delete-processbill-row-item',$items->id) }}" onclick="return confirm ('Are you sure to Delete')">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </a>
                             </td>
                         </tr>
                         @endforeach
@@ -79,7 +73,7 @@
                       <div class="col-sm">
                         <div class="form-group">
                             <label>Totle</label>
-                            <input class="form-control"  type="text" name="totle" id="totle" readonly>
+                            <input class="form-control" min="1" type="number" name="totle" id="totle" readonly>
                             {{-- <span class="form-control" id="val" name="totle"></span> --}}
                         </div>
                       </div>
@@ -93,7 +87,7 @@
                       <div class="col-sm">
                         <div class="form-group">
                             <label>Pay</label>
-                            <input class="form-control" id="price" name="price" type="text" >
+                            <input class="form-control"  id="price" name="price" type="text" >
                         </div>
                       </div>
                     </div>
